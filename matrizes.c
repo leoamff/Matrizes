@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define QTD_LINHAS 100
-#define QTD_COLUNAS 100
-
 void lerMatriz(int mat[][QTD_COLUNAS], int lin, int col);
 void preencherMatrizAleatoria(int mat[][QTD_COLUNAS], int lin, int col);
 void imprimirMatriz(int mat[][QTD_COLUNAS], int lin, int col);
@@ -21,8 +18,6 @@ int main() {
     int somatorio, elemento;
     float media;
 
-    // deve ser utilizado quando você quiser que a cada execução gere uma sequência diferente
-    // de números aleatórios
     srand(time(0)); 
 
     printf("Digite a quantidade de linhas (1-%d): ", QTD_LINHAS);
@@ -30,29 +25,23 @@ int main() {
     printf("Digite a quantidade de colunas (1-%d): ", QTD_COLUNAS);
     qtdColunas = lerDentroIntervalo(1, QTD_COLUNAS);
 
-    // lerMatriz(matriz, qtdLinhas, qtdColunas);
     preencherMatrizAleatoria(matriz, qtdLinhas, qtdColunas);
     printf("\n--------------------\n");
     imprimirMatriz(matriz, qtdLinhas, qtdColunas);
 
-    // Contar e imprimir a quantidade de números ímpares
     int impares = contarImpares(matriz, qtdLinhas, qtdColunas);
     printf("Quantidade de números ímpares: %d\n", impares);
 
-    // Buscar elemento digitado pelo usuário
     printf("Digite o elemento a ser buscado: ");
     scanf("%d", &elemento);
     buscarElemento(matriz, qtdLinhas, qtdColunas, elemento);
 
-    // Calcular e imprimir o somatório dos elementos
     somatorio = calcularSomatorio(matriz, qtdLinhas, qtdColunas);
     printf("Somatório de todos os elementos: %d\n", somatorio);
 
-    // Calcular e imprimir a média dos elementos
     media = (float)somatorio / (qtdLinhas * qtdColunas);
     printf("Média de todos os elementos: %.2f\n", media);
 
-    // Imprimir a média de todos os elementos de cada linha
     calcularMediaPorLinha(matriz, qtdLinhas, qtdColunas);
 
     return 0;
